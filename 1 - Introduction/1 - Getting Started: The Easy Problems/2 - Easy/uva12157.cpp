@@ -10,30 +10,8 @@ int main() {
     scanf("%d", &calls);
     while (calls--) {
       scanf("%d", &seconds);
-      int temp = seconds;
-
-      while (true) {
-        if (seconds < 30) {
-          bundle_mile += 10;
-          seconds -= 29;
-        } else {
-          bundle_mile += 20;
-          seconds -= 59;
-        }
-        if (seconds <= 0) break;
-      }
-      seconds = temp;
-
-      while (true) {
-        if (seconds < 60) {
-          bundle_juice += 15;
-          seconds -= 59;
-        } else {
-          bundle_juice += 30;
-          seconds -= 119;
-        }
-        if (seconds <= 0) break;
-      }
+      bundle_mile += (seconds / 30) * 10 + 10;
+      bundle_juice += (seconds / 60) * 15 + 15;
     }
 
     if (bundle_mile < bundle_juice)
